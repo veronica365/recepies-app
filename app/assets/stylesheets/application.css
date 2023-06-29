@@ -16,6 +16,7 @@
 :root {
   --primary: #181823;
   --secondary: #c0eef2;
+  --white: #fff;
   --tertiary: #537fe7;
   --border-radius: 5px;
 }
@@ -24,7 +25,7 @@
 *::before,
 *::after {
   margin: 0;
-  box-sizing: inherit;
+  font-family: 'Roboto', sans-serif;
 }
 
 .nav-bar {
@@ -73,7 +74,6 @@ section {
   border: 1px solid var(--secondary);
   border-radius: var(--border-radius);
   padding: 20px;
-  margin: 20px 0;
   max-width: 300px;
 }
 
@@ -91,6 +91,11 @@ input[type='checkbox'] {
   height: auto;
 }
 
+.form-check.form-switch {
+  display: flex;
+  align-items: center;
+}
+
 .new-food-link {
   display: flex;
   justify-content: center;
@@ -102,7 +107,6 @@ input[type='checkbox'] {
   background-color: var(--secondary);
   color: white;
   border-radius: 5px;
-  text-decoration: none;
 }
 
 .new-food-link > a:hover {
