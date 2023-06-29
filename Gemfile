@@ -5,8 +5,6 @@ ruby "3.2.2"
 
 gem 'rubocop', '>= 1.0', '< 2.0'
 
-gem 'bootstrap_form'
-
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.5", ">= 7.0.5.1"
 
@@ -74,5 +72,3 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
-
-gem "devise", "~> 4.9"
