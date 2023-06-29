@@ -3,10 +3,22 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.2.2'
 
+gem 'bootstrap_form'
+gem 'cancancan'
+gem 'devise'
+gem 'factory_bot_rails'
+gem 'jquery-rails'
+gem 'letter_opener'
+gem 'rack-cors'
+gem 'rails-controller-testing'
+gem 'rspec-rails', '~> 5.0.0'
+gem 'rswag'
 gem 'rubocop', '>= 1.0', '< 2.0'
+gem 'rubocop-discourse'
+gem 'shoulda-matchers', '~> 4.0'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem 'rails', '~> 7.0.5', '>= 7.0.5.1'
+gem 'rails', '~> 7.0.4', '>= 7.0.4.2'
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'
@@ -64,11 +76,4 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
-end
-
-group :test do
-  # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
-  gem 'capybara'
-  gem 'selenium-webdriver'
-  gem 'webdrivers'
 end
