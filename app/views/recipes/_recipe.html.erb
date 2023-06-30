@@ -4,7 +4,9 @@
       <strong>Name:</strong>
       <%= recipe.name %>
     </p>
-      <%= button_to "REMOVE", @recipe, method: :delete, class: "btn btn-outline-danger mt-4" %>
+    <a>
+      <%= button_to "REMOVE", recipe_path(id: recipe.id), method: :delete, class: "btn btn-outline-danger mt-4" %>
+    </a>
   </div>
 
   <div class="ms-5">
