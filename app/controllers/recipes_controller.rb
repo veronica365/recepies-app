@@ -1,9 +1,12 @@
 class RecipesController < ApplicationController
+  check_authorization
+  skip_authorization_check
+
   before_action :set_recipe, only: %i[show edit update destroy]
 
   # GET /recipes or /recipes.json
   def index
-    @recipes = Recipe.all.includes(:user).where(user: current_user)
+    @recipes = Recipe.all.where(user: current_user)
   end
 
   # GET /recipes/1 or /recipes/1.json
@@ -51,6 +54,14 @@ class RecipesController < ApplicationController
     end
   end
 
+  # PATCH update public to true or false
+  def toggle_public
+    @recipe = Recipe.find(params[:id])
+    @recipe.update(public: !@recipe.public)
+
+    redirect_to recipe_path(@recipe)
+  end
+
   # DELETE /recipes/1 or /recipes/1.json
   def destroy
     @recipe.destroy
@@ -65,7 +76,7 @@ class RecipesController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_recipe
-    @recipe = Recipe.includes(:user).find(params[:id])
+    @recipe = Recipe.find(params[:id])
   end
 
   # Only allow a list of trusted parameters through.

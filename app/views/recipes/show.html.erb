@@ -4,9 +4,13 @@
     <strong>Preparation time:</strong>
     <%= @recipe.preparation_time %>
   </p>
-  <div class="form-check form-switch d-flex flex-row-reverse">
-    <input class="form-check-input success" read-only type="checkbox" role="switch" id="flexSwitchCheckCheckedDisabled" <%= "checked" if @recipe.public %> />
-    <label class="form-check-label pe-5" for="flexSwitchCheckCheckedDisabled">Pubic </label>
+  <div class="d-flex align-items-center">
+    <% if can? :manage, @recipe%>
+      <p class="mb-0 pe-3">Public </p>
+      <%= form_with(model: @recipe, url: toggle_public_recipe_path(@recipe), method: :patch, html: { class: 'form-check form-switch' }) do |form| %>
+        <%= form.check_box :on, role: "switch", checked: @recipe.public, onchange: "this.form.submit()", class: "form-check-input success" %>
+      <% end %>
+    <% end %>
   </div>
 </div>
 
@@ -25,8 +29,10 @@
   <%= @recipe.public %>
 </p>
 <div class="d-flex justify-content-between mt-3 mb-5">
-  <button class="btn btn-outline-dark">General shopping list</button>
+  <% if can? :manage, @recipe%>
+  <%= link_to "General shopping list", general_shopping_lists_path, class: "btn btn-outline-dark" %>
   <%= link_to "Add ingredient", new_recipe_food_path, class: "btn btn-outline-dark" %>
+  <% end %>
 </div>
 
 <table>

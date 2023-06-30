@@ -3,7 +3,7 @@ class PublicRecipesController < ApplicationController
 
   # GET /recipes or /recipes.json
   def index
-    @public_recipes = Recipe.all.includes(:user).where(public: true)
+    @public_recipes = Recipe.includes(:user).where(public: true).order(created_at: 'DESC')
   end
 
   # GET /recipes/1 or /recipes/1.json
@@ -18,6 +18,6 @@ class PublicRecipesController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_recipe
-    @recipe = Recipe.includes(:user).find_by(id: params[:id], public: true)
+    @recipe = Recipe.find_by(id: params[:id], public: true)
   end
 end
