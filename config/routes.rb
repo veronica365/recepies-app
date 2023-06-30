@@ -16,4 +16,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "foods#index"
+  
+  get "/public_recipes(.:format)", to: "public_recipes#index"
+  get "/public_recipes/:id(.:format)", to: "public_recipes#show", as: 'public_recipe'
 end

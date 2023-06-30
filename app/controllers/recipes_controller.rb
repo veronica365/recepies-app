@@ -7,7 +7,7 @@ class RecipesController < ApplicationController
   end
 
   # GET /recipes/1 or /recipes/1.json
-  def show;
+  def show
     @recipefood = RecipeFood.includes(:food).where(recipe_id: params[:id])
     respond_to do |format|
       format.html

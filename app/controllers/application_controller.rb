@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
-
+  skip_before_action :authenticate_user!, if: :authenticate_user_public
+  skip_before_action :verify_authenticity_token, if: :authenticate_user_public
   protect_from_forgery with: :exception
 
   before_action :update_allowed_parameters, if: :devise_controller?
@@ -20,5 +21,11 @@ class ApplicationController < ActionController::Base
       format.html { render 'shared/_404' }
       format.json { render json: { errors: 'The details no longer exist' }, status: :not_found }
     end
+  end
+
+  private
+
+  def authenticate_user_public
+    request.fullpath.to_s.include?('public_recipes')
   end
 end
