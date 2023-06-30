@@ -10,9 +10,9 @@ class Ability
     return unless user.present?
 
     # additional permissions for logged in users
-    can :manage, Food, user: user
-    can :manage, Recipe, user: user
-    can :manage, RecipeFood, user: user
+    can :manage, Food, user_id: user.id
+    can :manage, Recipe, user_id: user.id
+    can :manage, RecipeFood, user_id: user.id
 
     return unless user.admin?
 
