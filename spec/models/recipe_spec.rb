@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Recipe, type: :model do
-  let(:user) { User.create(name: 'William') }
+  let(:user) { User.create(name: 'tails-tester') }
   subject do
     Recipe.new(name: 'Ruby on rails', preparation_time: 1, cooking_time: 2, public: true, user_id: user.id,
                description: 'This is a sample decription')
