@@ -8,7 +8,7 @@ class PublicRecipesController < ApplicationController
 
   # GET /recipes/1 or /recipes/1.json
   def show
-    return _private_record_not_found if @recipe.nil? || @recipe.empty?
+    return _private_record_not_found if @recipe.nil?
 
     @public_recipe_food = RecipeFood.includes(:food).joins(:recipe).where(recipe_id: params[:id],
                                                                           recipes: { public: true })
@@ -18,6 +18,6 @@ class PublicRecipesController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_recipe
-    @recipe = Recipe.includes(:user).where(id: params[:id], public: true)
+    @recipe = Recipe.includes(:user).find_by(id: params[:id], public: true)
   end
 end
