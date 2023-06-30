@@ -12,21 +12,21 @@
   <% end %>
 
   <div>
-    <%= form.label :quantity, style: "display: block" %>
+    <%= form.label :quantity, class: "d-block mt-3" %>
     <%= form.number_field :quantity %>
   </div>
 
   <div>
-    <%= form.label :user_id, style: "display: block" %>
-    <%= form.text_field :user_id %>
+    <%= form.label :recipe_id, class: "d-block mt-3" %>
+    <%= form.text_field :recipe_id %>
   </div>
 
   <div>
-    <%= form.label :food_id, style: "display: block" %>
+    <%= form.label :food_id, class: "d-block mt-3" %>
     <%= form.text_field :food_id %>
   </div>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit "Create Recipe Food", class: "mt-5 btn btn-outline-dark" %>
   </div>
 <% end %>
