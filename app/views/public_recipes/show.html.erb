@@ -5,7 +5,7 @@
     <%= @recipe.preparation_time %>
   </p>
   <div class="form-check form-switch d-flex flex-row-reverse">
-    <input class="form-check-input success" read-only type="checkbox" role="switch" id="flexSwitchCheckCheckedDisabled" <%= "checked" if @recipe.public %> />
+    <input class="form-check-input success" type="checkbox" role="switch" id="flexSwitchCheckCheckedDisabled" <%= "checked" if @recipe.public %> />
     <label class="form-check-label pe-5" for="flexSwitchCheckCheckedDisabled">Pubic </label>
   </div>
 </div>
@@ -24,10 +24,6 @@
   <strong>Public:</strong>
   <%= @recipe.public %>
 </p>
-<div class="d-flex justify-content-between mt-3 mb-5">
-  <button class="btn btn-outline-dark">General shopping list</button>
-  <%= link_to "Add ingredient", new_recipe_food_path, class: "btn btn-outline-dark" %>
-</div>
 
 <table>
   <thead>
@@ -35,11 +31,10 @@
       <th>Name</th>
       <th>Quantity</th>
       <th>Value</th>
-      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
-    <% @recipefood.each do |recipe_food| %>
+    <% @public_recipe_food.each do |recipe_food| %>
       <tr>
         <td>
           <%= recipe_food.food.name %>
@@ -52,12 +47,6 @@
         <td> 
           <%= (recipe_food.food.price * recipe_food.quantity) %>
         </td>
-      <td>
-        <div class="d-flex">
-          <%= link_to "Modify", edit_recipe_food_path(recipe_food), class: "btn btn-outline-info me-3" %>
-          <%= button_to "Delete", recipe_food, method: :delete, class: "btn btn-outline-danger" %>
-        </div>
-      </td>
       </tr>
     <% end %>
   </tbody>
