@@ -1,5 +1,6 @@
 class RecipeFoodsController < ApplicationController
   before_action :set_recipe_food, only: %i[show edit update destroy]
+  before_action :set_user_menu, only: %i[new edit create update]
 
   # GET /recipe_foods or /recipe_foods.json
   def index
@@ -62,6 +63,10 @@ class RecipeFoodsController < ApplicationController
     @recipe_food = RecipeFood.find(params[:id])
   end
 
+  def set_user_menu
+    @recipes = current_user.recipes
+    @foods = current_user.foods
+  end
   # Only allow a list of trusted parameters through.
   def recipe_food_params
     params.require(:recipe_food).permit(:quantity, :recipe_id, :food_id)
