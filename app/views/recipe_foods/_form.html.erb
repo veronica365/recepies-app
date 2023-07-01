@@ -13,17 +13,17 @@
 
   <div>
     <%= form.label :quantity, class: "d-block mt-3" %>
-    <%= form.number_field :quantity %>
+    <%= form.number_field :quantity, class: 'form-control' %>
   </div>
 
   <div>
     <%= form.label :recipe_id, class: "d-block mt-3" %>
-    <%= form.text_field :recipe_id %>
+    <%= form.select(:recipe_id, options_for_select(@recipes.collect { |u| ["#{u.name}", u.id]}), {}, {class: "form-control"}) %>
   </div>
 
   <div>
     <%= form.label :food_id, class: "d-block mt-3" %>
-    <%= form.text_field :food_id %>
+    <%= form.select(:food_id, options_for_select(@foods.collect{ |u| ["#{u.name}", u.id]}),{}, {class: "form-control"}) %>
   </div>
 
   <div>
